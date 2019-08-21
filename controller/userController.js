@@ -36,8 +36,19 @@ module.exports = {
    
                      user.save()
                         .then(user => {
-                           return res.status(201).json({
-                              message: 'user create successfully'
+                           // return res.status(201).json({
+                           //    message: 'user create successfully'
+                           // })
+
+                           let token = jwt.sign({
+                              _id: user._id,
+                              name: user.name,
+                              email: user.email
+                           }, 'secret', { expiresIn: '2h' })
+
+                           res.status(200).json({
+                              message: 'User Create Successfully',
+                              token: `Bearer ${token}`
                            })
                         })
                         .catch(error => serverError(res, error))

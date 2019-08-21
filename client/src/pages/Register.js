@@ -30,7 +30,7 @@ class Register extends React.Component{
    submitHandler = (event) => {
       event.preventDefault()
       let { name, email, password, confirmPassword } = this.state
-      this.props.register({name, email, password, confirmPassword})
+      this.props.register({name, email, password, confirmPassword}, this.props.history)
    }
 
    render() {
@@ -45,6 +45,13 @@ class Register extends React.Component{
             </div>
             <div className="row">
                <div className="col-md-6 offset-md-3">
+                  
+               {
+                  error.message && 
+                  <div className="alert alert-danger alert-dismissible" role="alert">
+                     {error.message}
+                  </div>
+               }
                   <form onSubmit={this.submitHandler}>
                      <div className="form-group">
                         <label htmlFor="name" className="lead">Name : </label>
@@ -66,9 +73,13 @@ class Register extends React.Component{
                            vlaue={email}
                            onChange={this.changeHandler}
                            placeholder="Enter Your Email "
-                           className="form-control"
+                           className={error.email ? "form-control is-invalid" : "form-control"}
                            required
                         />
+                        { error.email && <div className="invalid-feedback">
+                              {error.email}
+                           </div>
+                        }
                      </div>
                      <div className="form-group">
                         <label htmlFor="password" className="lead">Password : </label>
@@ -78,9 +89,13 @@ class Register extends React.Component{
                            vlaue={password}
                            onChange={this.changeHandler}
                            placeholder="Enter Your Password "
-                           className="form-control"
+                           className={error.password ? "form-control is-invalid" : "form-control"}
                            required
                         />
+                        { error.password && <div className="invalid-feedback">
+                              {error.password}
+                           </div>
+                        }
                      </div>
                      <div className="form-group">
                         <label htmlFor="confirmPassword" className="lead">Confirm Password : </label>
@@ -90,9 +105,13 @@ class Register extends React.Component{
                            vlaue={confirmPassword}
                            onChange={this.changeHandler}
                            placeholder="Enter Confirm Password "
-                           className="form-control"
+                           className={error.confirmPassword ? "form-control is-invalid" : "form-control"}
                            required
                         />
+                        { error.confirmPassword && <div className="invalid-feedback">
+                              {error.confirmPassword}
+                           </div>
+                        }
                      </div>
                      <Link to="/login">Already Have An Account? Login Here...</Link>
                      <button className="btn btn-primary mt-2 d-block"> Submit </button>

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { login } from '../store/actions/authAction'
 
 class Login extends React.Component{
    state = {
@@ -14,6 +16,21 @@ class Login extends React.Component{
       })
    }
 
+   static getDerivedStateFromProps(nextProps, prevState) {
+      if(JSON.stringify(nextProps.auth.error) !== JSON.stringify(prevState.error)) {
+        return{
+          error: nextProps.auth.error,
+        }
+      }
+      return null
+    }
+
+   submitHandler = (event) => {
+      event.preventDefault()
+      let { email, password } = this.state
+      this.props.login({ email, password }, this.props.history)
+   }
+
    render() {
       let { email, password, error } = this.state
 
@@ -26,7 +43,13 @@ class Login extends React.Component{
             </div>
             <div className="row">
                <div className="col-md-6 offset-md-3">
-                  <form>
+               {
+                  error.message && 
+                  <div className="alert alert-danger alert-dismissible" role="alert">
+                     {error.message}
+                  </div>
+               }
+                  <form onSubmit={this.submitHandler}>
                      <div className="form-group">
                         <label htmlFor="email" className="lead">Email : </label>
                         <input 
@@ -35,9 +58,13 @@ class Login extends React.Component{
                            vlaue={email}
                            onChange={this.changeHandler}
                            placeholder="Enter Your Email "
-                           className="form-control"
+                           className={error.email ? "form-control is-invalid" : "form-control"}
                            required
                         />
+                        { error.email && <div className="invalid-feedback">
+                              {error.email}
+                           </div>
+                        }
                      </div>
                      <div className="form-group">
                         <label htmlFor="password" className="lead">Password : </label>
@@ -61,4 +88,8 @@ class Login extends React.Component{
    }
 }
 
-export default Login
+const mapStateToProps = state => ({
+   auth: state.auth
+})
+
+export default connect(mapStateToProps, { login })(Login)
