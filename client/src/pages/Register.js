@@ -37,7 +37,7 @@ class Register extends React.Component{
       let { name, email, password, confirmPassword, error } = this.state
 
       return (
-         <div className="mt-3">
+         <div className="my-3 container" id="minHeight">
             <div className="row">
                <div className="text-center my-3 col-12">
                   <h2 className="display-4">Register Form</h2>

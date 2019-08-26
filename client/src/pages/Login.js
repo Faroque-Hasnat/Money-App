@@ -35,7 +35,7 @@ class Login extends React.Component{
       let { email, password, error } = this.state
 
       return (
-         <div className="mt-3">
+         <div className="my-3 container" id="minHeight">
             <div className="row">
                <div className="text-center my-3 col-12">
                   <h2 className="display-4">Login Form</h2>

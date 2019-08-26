@@ -5,12 +5,15 @@ import Home from '../pages/Home'
 import Dashboard from '../pages/Dashboard'
 import Register from '../pages/Register'
 import Login from '../pages/Login'
+import Navbar from './DesignAll/Navbar'
+import Footer from './DesignAll/Footer'
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <div className="container">
+        <Navbar />
+        <div className="">
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/dashboard' component={Dashboard} />
@@ -18,6 +21,7 @@ function App() {
             <Route path='/login' component={Login} />
           </Switch>
         </div>
+        <Footer />
       </BrowserRouter>
     </div>
   );

@@ -44,7 +44,7 @@ module.exports = {
                               _id: user._id,
                               name: user.name,
                               email: user.email
-                           }, 'secret', { expiresIn: '2h' })
+                           }, 'secret')
 
                            res.status(200).json({
                               message: 'User Create Successfully',
@@ -84,7 +84,7 @@ module.exports = {
                               _id: user._id,
                               name: user.name,
                               email: user.email
-                           }, 'secret', { expiresIn: '2h' })
+                           }, 'secret')
 
                            res.status(200).json({
                               message: 'Login Successfully',
