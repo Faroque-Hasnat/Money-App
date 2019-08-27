@@ -39,7 +39,7 @@ const PORT = process.env.PORT || 4000
 
 app.listen(PORT, () =>{
    console.log(`Server is running on PORT ${PORT}`)
-   mongoose.connect(`mongodb+srv://${process.env.dbUsername}:${process.env.dbPassword}@money-app-stx9s.mongodb.net/test?retryWrites=true&w=majority`, 
+   mongoose.connect(`mongodb://${process.env.dbUsername}:${process.env.dbPassword}@money-app-shard-00-00-stx9s.mongodb.net:27017,money-app-shard-00-01-stx9s.mongodb.net:27017,money-app-shard-00-02-stx9s.mongodb.net:27017/test?ssl=true&replicaSet=money-app-shard-0&authSource=admin&retryWrites=true&w=majority`, 
       {useNewUrlParser: true},
       () => {
          console.log('Database Connected...')
