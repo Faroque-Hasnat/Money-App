@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/Faroque-Hasnat/Money-App#readme",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "create-react-app": "^3.0.1",
