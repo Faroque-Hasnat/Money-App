@@ -36,9 +36,6 @@ module.exports = {
    
                      user.save()
                         .then(user => {
-                           // return res.status(201).json({
-                           //    message: 'user create successfully'
-                           // })
 
                            let token = jwt.sign({
                               _id: user._id,
