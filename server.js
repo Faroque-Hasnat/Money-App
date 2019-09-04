@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const passport = require('passport')
-cosnt path = require('path')
+const path = require('path')
 
 const userRouter = require('./router/userRouter')
 const transactionRouter = require('./router/transactionRouter')
