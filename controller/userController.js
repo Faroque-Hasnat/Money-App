@@ -67,7 +67,7 @@ module.exports = {
          User.findOne({ email })
                .then(user => {
                   if(!user) {
-                     return resourceError(res, 'User Not Found')
+                     return resourceError(res, 'User Not Found. Please Go To Register Page And Create A Account.')
                   } else {
                      bcrypt.compare(password, user.password, (err, result) => {
                         if(err) {
