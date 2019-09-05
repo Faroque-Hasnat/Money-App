@@ -16,6 +16,9 @@ class Dashboard extends React.Component{
    }
    
    render() {
+      if(!this.props.auth.isAuthenticated) {
+         return <Redirect to='/login' />
+      }
 
       let { balance, transactions } = this.props.transaction
 
